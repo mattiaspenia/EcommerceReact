@@ -1,5 +1,7 @@
 import React, { useState } from "react";
 import "./Navbar.css";
+import CartWidget from "./Cartwidget/index.jsx";
+import ItemListContainer from "./ItemListContainer/ItemListContainer";
 const Navbar = () => {
 	const [isOpen, setIsOpen] = useState(false);
 	return (
@@ -10,6 +12,7 @@ const Navbar = () => {
 				<a href="/productos">Productos</a>
 				<a href="/sale">Sale</a>
 				<a href="/contact">Contacto</a>
+				<CartWidget />
 			</div>
 			<div
 				className={`nav-toggle ${isOpen && "open"}`}
@@ -20,5 +23,5 @@ const Navbar = () => {
 		</div>
 	);
 };
-
+<ItemListContainer />;
 export default Navbar;
