@@ -1,36 +1,28 @@
-import { Button } from 'react-bootstrap'
-import { Add, Remove } from 'react-bootstrap'
-import { useEffect, useState } from 'react';
-import { ProductAmountContainer, ProductAmount } from ''
+import '../ItemCount/ItemCount.css'
+import React,{useState} from 'react';
+import Button from 'react-bootstrap/Button';
 
-const ItemCount = ({stock = 0, initial = 1, onAdd}) => {
-    const [count, setCount] = useState(0);
-    useEffect (() => {
-        setCount(initial);
-    },[]);
-
-    const increment = () => {
-        if (count < stock) {
+const ItemCount = ({ initial, stock, onAdd }) => {
+    const [count, setCount] = useState(initial);   
+        const increase = () => {
             setCount(count + 1)
+            
         }
-    }
-
-    const decrement = () => {
-        if (count > initial) {
+    
+        const decrease = () => {
             setCount(count - 1);
         }
-    }
+    
     return (
-        <ProductAmountContainer>
-            <Button  className="bi bi-plus-lg" variant="text" onClick={increment}><Add /></Button>
-            <ProductAmount>{count}</ProductAmount>
-            <Button variant="text" className="bi bi-dash" onClick={decrement}><Remove /></Button>
-            {
-                stock
-                ? <Button variant="contained" color="primary" onClick={() => onAdd(count)}>Agregar al Carrito</Button>
-                : <Button variant="contained" disabled>Agregar al Carrito</Button>
-            }
-        </ProductAmountContainer>
+        <div className='contador'>
+            <Button variant="primary" disabled={count <= 1} onClick={decrease}>-</Button>{' '}
+            <span>{count}</span>
+            <Button variant="primary" disabled={count >= stock} onClick={increase}>+</Button>{' '}
+            <div>
+                <Button variant="outline-success" disabled={stock <= 0} onClick={() => onAdd(count)}>Agregar al carrito</Button>{' '}
+            </div>
+        </div>
     )
 }
-export default ItemCount;
+
+export default ItemCount
