@@ -1,9 +1,9 @@
 import '../ItemCount/ItemCount.css'
-import React,{useState} from 'react';
+import React,{ useEffect, useState} from 'react';
 import Button from 'react-bootstrap/Button';
 
 const ItemCount = ({ initial, stock, onAdd }) => {
-    const [count, setCount] = useState(initial);   
+    const [count, setCount] = useState(parseInt(initial));   
         const increase = () => {
             setCount(count + 1)
             
@@ -12,6 +12,10 @@ const ItemCount = ({ initial, stock, onAdd }) => {
         const decrease = () => {
             setCount(count - 1);
         }
+
+        useEffect(() => {
+            setCount(parseInt(initial));
+        }, [initial])
     
     return (
         <div className='contador'>
