@@ -5,12 +5,12 @@ import Button from 'react-bootstrap/Button';
 const ItemCount = ({ initial, stock, onAdd }) => {
     const [count, setCount] = useState(parseInt(initial));   
         const increase = () => {
-            setCount(count + 1)
+            setCount(prev => prev + 1)
             
         }
     
         const decrease = () => {
-            setCount(count - 1);
+            setCount(prev => prev - 1);
         }
 
         useEffect(() => {
@@ -19,11 +19,11 @@ const ItemCount = ({ initial, stock, onAdd }) => {
     
     return (
         <div className='contador'>
-            <Button variant="primary" disabled={count <= 1} onClick={decrease}>-</Button>{' '}
+            <Button variant="outline-dark" disabled={count <= 1} onClick={decrease}>-</Button>{' '}
             <span>{count}</span>
-            <Button variant="primary" disabled={count >= stock} onClick={increase}>+</Button>{' '}
+            <Button variant="outline-dark" disabled={count >= stock} onClick={increase}>+</Button>{' '}
             <div>
-                <Button variant="outline-success" disabled={stock <= 0} onClick={() => onAdd(count)}>Agregar al carrito</Button>{' '}
+                <Button variant="light" disabled={stock <= 0} onClick={() => onAdd(count)}>Agregar al carrito</Button>{' '}
             </div>
         </div>
     )
