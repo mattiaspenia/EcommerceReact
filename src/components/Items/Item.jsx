@@ -19,6 +19,7 @@ const Item = ({ id, name, image, price, stock, description }) => {
 					<div className="price">
 						<span>{price}</span>
 					</div>
+                    <div><span>{description}</span></div>
 					<ItemCount stock={stock} initial={0} onAdd={onAdd} />
 				</Card.Body>
 			</Card>
