@@ -1,26 +1,37 @@
 import ItemList from "../Items/ItemList";
-import CustomFetch from "../fetch";
+import customFetch from "../fetch";
 import Title from "../Title/index";
-import { data } from "../utilities/data";
 import { useEffect, useState } from "react";
 import Container from "react-bootstrap/Container";
 import Row from "react-bootstrap/Row";
+import { useParams } from "react-router-dom";
+const { products } = require("../utilities/data");
 
 const ItemListContainer = () => {
-	const [products, setProducts] = useState([]);
+	const [datos, setDatos] = useState([]);
+	const { id } = useParams();
 
 	useEffect(() => {
-		CustomFetch(data)
-			.then((res) => setProducts(res))
-			.catch((err) => console.log(err));
-	}, []);
+		if (id) {
+			customFetch(
+				500,
+				products.filter((item) => item.categoryId === parseInt(id))
+			)
+				.then((result) => setDatos(result))
+				.catch((err) => console.log(err));
+		} else {
+			customFetch(500, products)
+				.then((result) => setDatos(result))
+				.catch((err) => console.log(err));
+		}
+	}, [id]);
 
 	return (
 		<div className="ItemListContainer">
 			<Container>
 				<Row>
 					<Title />
-					<ItemList items={products} />
+					<ItemList items={datos} />
 				</Row>
 			</Container>
 		</div>

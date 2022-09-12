@@ -7,22 +7,22 @@ const onAdd = (quantity) => {
 
 const GetItem = ({ item }) => {
 	console.log(item);
+	const { name, image, description, price, stock } = item;
 	return (
 		<>
 			{item ? (
-				<Card bg="black" border="dark" style={{ width: "18rem" }}>
-					<Card.Img variant="top" src={item.image} />
+				<Card bg="white" border="dark" style={{ width: "18rem" }}>
+					<Card.Img variant="top" src={image} />
 					<Card.Body className="productBody">
-						<Card.Title className="productTitle">{item.name}</Card.Title>
-						<Card.Text className="productDescription">
-							{item.description}
-						</Card.Text>
+						<Card.Title className="productTitle">{name}</Card.Title>
+						<Card.Text className="productDescription">{description}</Card.Text>
 						<div className="price">
-							<span>{item.price}</span>
-							<span>stock: {item.stock}</span>
-							<span>{item.description}</span>
+							<span>{price}</span>
 						</div>
-						<ItemCount stock={item.stock} initial={1} onAdd={onAdd} />
+						<div>
+							<span>Stock: {stock}</span>
+						</div>
+						<ItemCount stock={stock} initial={1} onAdd={onAdd} />
 					</Card.Body>
 				</Card>
 			) : (

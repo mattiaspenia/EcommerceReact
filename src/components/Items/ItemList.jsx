@@ -5,7 +5,10 @@ const ItemList = ({ items = [] }) => {
 	return (
 		<>
 			{items.length === 0 ? (
-				<p className="loading"> Loading... </p>
+				<p className="loading" font="Open Sans">
+					{" "}
+					Loading...{" "}
+				</p>
 			) : (
 				items.map((item) => (
 					<Item

@@ -1,7 +1,17 @@
 .contador {
 	width: fit-content;
-	background-color: rgb(139, 105, 233);
+	font: "Open Sans";
+	background-color: rgb(86, 60, 158);
 	margin: auto;
 	padding: 1rem;
 	text-align: center;
+}
+@font-face {
+	font-family: "Open Sans";
+	font-style: normal;
+	font-weight: 300;
+	font-stretch: 100%;
+	src: url(https://fonts.gstatic.com/s/opensans/v34/memvYaGs126MiZpBA-UvWbX2vVnXBbObj2OVTSymu1aB.woff2)
+		format("woff2");
+	unicode-range: U+0370-03FF;
 }

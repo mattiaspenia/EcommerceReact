@@ -1,5 +1,6 @@
 import Card from "react-bootstrap/Card";
 import ItemCount from "../ItemCount/ItemCount";
+import { Link } from "react-router-dom";
 
 // Items
 
@@ -19,7 +20,12 @@ const Item = ({ id, name, image, price, stock, description }) => {
 					<div className="price">
 						<span>{price}</span>
 					</div>
-                    <div><span>{description}</span></div>
+					<div>
+						<span>{description}</span>
+					</div>
+					<div>
+						<Link to={`/item/${id}`}>Detalles</Link>{" "}
+					</div>
 					<ItemCount stock={stock} initial={0} onAdd={onAdd} />
 				</Card.Body>
 			</Card>
