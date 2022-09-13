@@ -2,11 +2,7 @@ import Card from "react-bootstrap/Card";
 import ItemCount from "../ItemCount/ItemCount";
 import { Link } from "react-router-dom";
 
-// Items
-
 const Item = ({ id, name, image, price, stock, description }) => {
-	// Alert Agregando items al carro
-
 	const onAdd = (quantity) => {
 		alert("Seleccionaste " + quantity + " items.");
 	};

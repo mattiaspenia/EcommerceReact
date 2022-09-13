@@ -5,7 +5,7 @@ import { useEffect, useState } from "react";
 import Container from "react-bootstrap/Container";
 import Row from "react-bootstrap/Row";
 import { useParams } from "react-router-dom";
-const { products } = require("../utilities/data");
+const { data } = require("../utilities/data");
 
 const ItemListContainer = () => {
 	const [datos, setDatos] = useState([]);
@@ -15,12 +15,12 @@ const ItemListContainer = () => {
 		if (id) {
 			customFetch(
 				500,
-				products.filter((item) => item.categoryId === parseInt(id))
+				data.filter((item) => item.categoryId === parseInt(id))
 			)
 				.then((result) => setDatos(result))
 				.catch((err) => console.log(err));
 		} else {
-			customFetch(500, products)
+			customFetch(500, data)
 				.then((result) => setDatos(result))
 				.catch((err) => console.log(err));
 		}
