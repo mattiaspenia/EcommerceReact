@@ -1,13 +1,19 @@
 import ItemCount from "../ItemCount/ItemCount";
 import Card from "react-bootstrap/Card";
+import Spinner from "react-bootstrap/Spinner";
+import { Link } from "react-router-dom";
+import Button from "react-bootstrap/Button";
+import { useState } from "react";
 
-const onAdd = (quantity) => {
-	alert("Seleccionaste " + quantity + " items.");
-};
-
-const GetItem = ({ item }) => {
-	console.log(item);
+const ItemDetail = ({ item }) => {
+	const [itemCount, setItemCount] = useState(0);
 	const { name, image, description, price, stock } = item;
+
+	const onAdd = (quantity) => {
+		alert("Seleccionaste " + quantity + " items.");
+		setItemCount(quantity);
+	};
+
 	return (
 		<>
 			{item ? (
@@ -22,14 +28,22 @@ const GetItem = ({ item }) => {
 						<div>
 							<span>Stock: {stock}</span>
 						</div>
-						<ItemCount stock={stock} initial={1} onAdd={onAdd} />
+						{ItemCount === 0 ? (
+							<ItemCount stock={stock} initial={itemCount} onAdd={onAdd} />
+						) : (
+							<Link to="/cart">
+								<Button variant="outline-secondary">Terminar Compra</Button>
+							</Link>
+						)}
 					</Card.Body>
 				</Card>
 			) : (
-				<p className="loading"> Loading... </p>
+				<div className="loading">
+					<Spinner animation="border" variant="light" />
+				</div>
 			)}
 		</>
 	);
 };
 
-export default GetItem;
+export default ItemDetail;
