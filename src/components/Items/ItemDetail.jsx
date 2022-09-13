@@ -7,32 +7,34 @@ import { useState } from "react";
 
 const ItemDetail = ({ item }) => {
 	const [itemCount, setItemCount] = useState(0);
-	const { name, image, description, price, stock } = item;
 
 	const onAdd = (quantity) => {
 		alert("Seleccionaste " + quantity + " items.");
 		setItemCount(quantity);
+		test.addToCart(item, quantity);
 	};
 
 	return (
 		<>
 			{item ? (
 				<Card bg="white" border="dark" style={{ width: "18rem" }}>
-					<Card.Img variant="top" src={image} />
+					<Card.Img variant="top" src={item.image} />
 					<Card.Body className="productBody">
-						<Card.Title className="productTitle">{name}</Card.Title>
-						<Card.Text className="productDescription">{description}</Card.Text>
+						<Card.Title className="productTitle">{item.name}</Card.Title>
+						<Card.Text className="productDescription">
+							{item.description}
+						</Card.Text>
 						<div className="price">
-							<span>{price}</span>
+							<span>{item.price}</span>
 						</div>
 						<div>
-							<span>Stock: {stock}</span>
+							<span>Stock: {item.stock}</span>
 						</div>
 						{ItemCount === 0 ? (
-							<ItemCount stock={stock} initial={itemCount} onAdd={onAdd} />
+							<ItemCount stock={item.stock} initial={itemCount} onAdd={onAdd} />
 						) : (
 							<Link to="/cart">
-								<Button variant="outline-secondary">Terminar Compra</Button>
+								<Button variant="outline-secondary">CheckOut</Button>
 							</Link>
 						)}
 					</Card.Body>

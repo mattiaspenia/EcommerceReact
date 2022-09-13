@@ -1,12 +1,7 @@
 import Card from "react-bootstrap/Card";
-import ItemCount from "../ItemCount/ItemCount";
 import { Link } from "react-router-dom";
 
 const Item = ({ id, name, image, price, stock, description }) => {
-	const onAdd = (quantity) => {
-		alert("Seleccionaste " + quantity + " items.");
-	};
-
 	return (
 		<>
 			<Card bg="white" border="dark" style={{ width: "18rem" }}>
@@ -22,7 +17,6 @@ const Item = ({ id, name, image, price, stock, description }) => {
 					<div>
 						<Link to={`/item/${id}`}>Detalles</Link>{" "}
 					</div>
-					<ItemCount stock={stock} initial={0} onAdd={onAdd} />
 				</Card.Body>
 			</Card>
 		</>
