@@ -1,14 +1,14 @@
 import Item from "./Item";
+import Spinner from "react-bootstrap/Spinner";
 
 // ItemList
 const ItemList = ({ items = [] }) => {
 	return (
 		<>
 			{items.length === 0 ? (
-				<p className="loading" font="Open Sans">
-					{" "}
-					Loading...{" "}
-				</p>
+				<div className="loading" font="Open Sans">
+					<Spinner animation="border" variant="light" />
+				</div>
 			) : (
 				items.map((item) => (
 					<Item

@@ -15,7 +15,7 @@ const Item = ({ id, name, image, price, stock, description }) => {
 						<span>{description}</span>
 					</div>
 					<div>
-						<Link to={`/item/${id}`}>Detalles</Link>{" "}
+						<Link to={`/item/${id}`}>Detalles</Link>
 					</div>
 				</Card.Body>
 			</Card>
