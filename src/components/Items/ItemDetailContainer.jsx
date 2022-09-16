@@ -7,7 +7,7 @@ import { useParams } from "react-router-dom";
 const ItemDetailContainer = () => {
 	const [product, setProduct] = useState({});
 	const { id } = useParams();
-
+	console.log(product);
 	useEffect(() => {
 		customFetch(
 			2000,

@@ -17,20 +17,18 @@ const ItemDetail = ({ item }) => {
 	return (
 		<>
 			{item ? (
-				<Card bg="white" border="dark" style={{ width: "18rem" }}>
+				<Card bg="white" border="dark" style={{ width: "16rem" }}>
 					<Card.Img variant="top" src={item.image} />
-					<Card.Body className="productBody">
-						<Card.Title className="productTitle">{item.name}</Card.Title>
-						<Card.Text className="productDescription">
-							{item.description}
-						</Card.Text>
+					<Card.Body>
+						<Card.Title>{item.name}</Card.Title>
+						<Card.Text>{item.description}</Card.Text>
 						<div className="price">
 							<span>{item.price}</span>
 						</div>
 						<div>
 							<span>Stock: {item.stock}</span>
 						</div>
-						{ItemCount === 0 ? (
+						{itemCount === 0 ? (
 							<ItemCount stock={item.stock} initial={itemCount} onAdd={onAdd} />
 						) : (
 							<Link to="/cart">

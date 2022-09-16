@@ -19,6 +19,7 @@ const CartContextProvider = ({ children }) => {
 				},
 			]);
 		} else {
+			//al encontrarlo, entonces aumentamos el qty de ese producto
 			found.qtyItem += qty;
 		}
 	};
